@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/Organization">
+  <head>
+    <meta charset="utf-8">
+    <title>{% if page.title %}{{page.title}} | {% endif %}The Society of the Cincinnati of Rhode Island</title>
+    <meta name="author" content="Society of the Cincinnati of Rhode Island">
+    <meta name=viewport content="width=device-width, initial-scale=1">
+    <link rel="icon" href="{{ get_url(path='anchor.svg') }}" type="image/svg+xml" sizes="any">
+    <link itemprop="url" href="{{ config.base_url }}">
+    <link rel="canonical" href="{{ config.base_url }}">
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display+SC:wght@0,400;1,700" rel="stylesheet">
+    <link rel="stylesheet" href="{{ get_url(path='base.css') }}">
+    {% block head %}{% endblock %} <!-- overrides earlier css files -->
+  </head>
+  <body>
+    <nav>
+      <object id="header-sigil" data="{{ get_url(path='anchor.svg') }}" type="image/svg+xml"></object>
+      <ul>
+        <li><a href="{{ get_url(path='@/_index.md') }}">About</a></li>
+        <li><a href="{{ get_url(path='@/events/_index.md') }}">Events</a></li>
+        <li><a href="{{ get_url(path='@/resources/_index.md') }}">Resources</a></li>
+        <li><a href="{{ get_url(path='@/contact.md') }}">Contact</a></li>
+      </ul>
+    </nav>
+    <header>
+      <h1 class="title">
+          {% if page.title %}{{ page.title | markdown(inline=true) | safe }}
+          {% else %}
+            {% if section.title  %}
+              {{ section.title }}
+            {% else %}
+              Society of the Cincinnati of Rhode Island
+            {% endif %}
+          {% endif %}
+        </h1>
+      {% if page.extra.publish_note %}
+      <em>{{ page.extra.publish_note | markdown | safe }}</em>
+      {% endif %}
+    </header>
+    <main>
+      {% block content %} {% endblock %}
+    </main>
+    <footer>
+      
+    </footer>
+  </body>
+</html>

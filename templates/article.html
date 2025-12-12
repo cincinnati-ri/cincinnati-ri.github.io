@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ get_url(path='blog.css')}}">
+{% endblock head %}
+
+{% block header %}
+  <h1 class="title">{% if page.extra.display_title %}{{ page.extra.display_title | markdown(inline=true) | safe }}{% else %}{{ page.title }}{% endif %}</h1>
+  {% if not page.extra.resource %}
+  <p class="subtitle"><strong>{{ page.date | date(format="%B %d, %Y") }}</strong></p>
+  {% endif %}
+{% endblock header %}
+
+{% block content %}
+<main>
+  <article>
+    {% if page.extra.publish_note %}
+      <em>{{ page.extra.publish_note | markdown | safe }}</em>
+    {% endif %}
+
+    {{ page.content | safe }}
+  </article>
+</main>
+{% endblock content %}

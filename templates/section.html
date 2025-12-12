@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block header %}
+<h1>
+  {% if section.title %}{{section.title}} {% endif %}
+</h1>
+{% endblock header %}
+
+{% block content %}
+
+{% for page in section.pages %}
+<section>
+  <header>
+    <h2><a href="{{ page.permalink | safe }}">
+      {% if page.extra.display_title %}
+      {{ page.extra.display_title | markdown(inline=true) | safe }}
+      {% else %}
+      {{ page.title }}
+      {% endif %}
+    </a></h2>
+  </header>
+<p>{{ page.summary | safe }}</p>
+</section>
+{% endfor %}
+{% endblock content %}
