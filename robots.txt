@@ -1,0 +1,4 @@
+User-agent: *
+Disallow:
+Allow: /
+Sitemap: https://cincinnati-ri.github.io/sitemap.xml
